@@ -7,6 +7,7 @@ color red = #FF0B03;
 color pruple = #582BD6;
 color white = #FF00C4;
 
+float sliderX, shade, thickness;
 
 color selectedColor=blue; 
 
@@ -16,12 +17,23 @@ void setup() {
   size(1200, 1200);
   strokeWeight(5); 
   stroke(gb);
-
+ sliderX = 500;
+ shade = 0;
 }
 
 void draw(){
   
- background(pruple);
+ background(shade);
+ 
+ thickness = map(sliderX, 100, 700, 0, 15); 
+ 
+ strokeWeight(thickness); 
+ 
+ line(100, 700, 700, 700); 
+ circle(sliderX, 700, 50);
+ 
+ 
+ 
  
  //buttons 
  if(dist(100, 550, mouseX, mouseY) < 50) { 
@@ -93,11 +105,27 @@ fill(yellow);
  
 
 }
+void mouseDragged(){
+  controlSlider(); 
+} 
 
 
 
 
-void mouseReleased() { 
+void controlSlider() {
+   if(mouseX>100 && mouseX <700 && mouseY > 675 && mouseY<725) {
+   sliderX= mouseX;
+ }
+ shade=map(sliderX, 100, 700 ,0, 15);
+}
+
+
+void mouseReleased() 
+
+{
+  controlSlider(); 
+}
+ { 
   if (dist(100, 550, mouseX, mouseY) < 50) {
  selectedColor = green;
  
@@ -121,4 +149,5 @@ void mouseReleased() {
  if (mouseX>650 && mouseX< 750 && mouseY>350 && mouseY < 450){
  selectedColor = red;
  }
+
 }
