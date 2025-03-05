@@ -1,4 +1,6 @@
  //p3 
+ 
+ int c = 0;
 color blue = #03DBFF;
 color gb = #03FFD3;
 color green = #03FF50;
@@ -18,7 +20,7 @@ void setup() {
   strokeWeight(5); 
   stroke(gb);
  sliderX = 500;
- shade = 0;
+ shade = 123;
 }
 
 void draw(){
@@ -27,15 +29,16 @@ void draw(){
  
  thickness = map(sliderX, 100, 700, 0, 15); 
  
- strokeWeight(thickness); 
- 
+ strokeWeight(5); 
+ fill(shade, green,255); 
  line(100, 700, 700, 700); 
  circle(sliderX, 700, 50);
  
- 
+  strokeWeight(5); 
  
  
  //buttons 
+ 
  if(dist(100, 550, mouseX, mouseY) < 50) { 
    stroke(white); 
  } else { 
@@ -65,7 +68,7 @@ void draw(){
    stroke(gb);
  }
  
-    
+  
  
  
   fill(red);
@@ -116,8 +119,9 @@ void controlSlider() {
    if(mouseX>100 && mouseX <700 && mouseY > 675 && mouseY<725) {
    sliderX= mouseX;
  }
- shade=map(sliderX, 100, 700 ,0, 15);
+ shade=map(sliderX, 100, 700 ,0, 255);
 }
+
 
 
 void mouseReleased() 
